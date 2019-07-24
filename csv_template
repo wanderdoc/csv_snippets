@@ -1,0 +1,41 @@
+#!perl
+use strict;
+use warnings FATAL => qw(all);
+
+use Text::CSV_XS;
+use File::Spec;
+use File::Path qw(make_path remove_tree);
+use FindBin qw($Bin);
+
+
+
+
+
+
+
+
+my $csv_par = 
+{
+	binary => 1, auto_diag => 1, allow_whitespace => 1,
+	sep_char => ';', eol => $/, quote_char => undef, #
+};
+my $SOURCE = shift or die "No source!\n";
+my $OUTPUT_DIR = File::Spec->catdir($Bin, '_output');
+
+if ( -d $OUTPUT_DIR )
+{
+     remove_tree($OUTPUT_DIR, {verbose => 1});
+}
+make_path($OUTPUT_DIR, {verbose => 1});
+
+
+opendir (my $dir, $SOURCE) or die "$!";
+
+
+while (my $file = readdir $dir)
+{
+  next if $file =~ /\A\.\.?\z/;
+  open my $in, "<", File::Spec->catdir($SOURCE, $file) or die "$!";
+  
+  my $csv = Text::CSV_XS->new($csv_par);
+}
