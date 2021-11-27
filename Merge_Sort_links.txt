@@ -1,0 +1,3 @@
+https://codereview.stackexchange.com/questions/91855/merge-sort-in-perl # perlish implementation.
+https://stackoverflow.com/questions/15123988/tests-cases-for-merge-in-merge-sort # test sets.
+https://www.geeksforgeeks.org/counting-inversions/ # understanding breakthrough on merge-and-count.
